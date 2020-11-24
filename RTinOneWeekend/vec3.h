@@ -3,6 +3,7 @@
 #include <iostream>
 
 using std::sqrt;
+using std::fabs;
 
 class vec3
 {
@@ -24,6 +25,12 @@ public:
 
 	double length_squared() const;
 	double length() const;
+
+	static vec3 random();
+
+	static vec3 random(double min, double max);
+
+	bool near_zero() const;
 public:
 	double e[3];
 };
@@ -90,3 +97,15 @@ inline vec3 unit_vector(vec3 v)
 {
 	return v / v.length();
 }
+
+
+vec3 random_in_unit_sphere();
+
+vec3 random_unit_vector();
+
+vec3 random_in_hemisphere(const vec3& normal);
+
+vec3 reflect(const vec3& v, const vec3& n);
+
+vec3 refract(const vec3& uv, const vec3& n, double etai_over_etat);
+

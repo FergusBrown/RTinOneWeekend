@@ -15,6 +15,7 @@ void hittable_list::add(shared_ptr<hittable> object)
 	objects.push_back(object);
 }
 
+
 bool hittable_list::hit(const ray& r, double t_min, double t_max, hit_record& rec) const
 {
 	hit_record temp_rec;

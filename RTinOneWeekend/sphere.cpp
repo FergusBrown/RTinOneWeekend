@@ -1,7 +1,9 @@
 #include "sphere.h"
 
-sphere::sphere(point3 centre, double r) :
-    centre(centre), radius(r)
+
+
+sphere::sphere(point3 centre, double r, shared_ptr<material> m) :
+    centre(centre), radius(r), mat_ptr(m)
 {
 }
 
@@ -34,6 +36,7 @@ bool sphere::hit(const ray& r, double t_min, double t_max, hit_record& rec) cons
     rec.p = r.at(rec.t);
     vec3 outward_normal = (rec.p - centre) / radius;
     rec.set_face_normal(r, outward_normal);
+    rec.mat_ptr = mat_ptr;
 
     return true;
 }
